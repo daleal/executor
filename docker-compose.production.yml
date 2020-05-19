@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   executor:
+    image: executor_executor
     build:
       context: executor
     init: true
@@ -15,6 +16,7 @@ services:
         condition: any
 
   web:
+    image: executor_web
     build:
       context: api
     init: true
