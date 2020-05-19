@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Include application files
+!app.py
+
+# Include build files
+!entrypoint.sh
+!pyproject.toml
+!poetry.lock

@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  executor:
+    build:
+      context: executor
+    init: true
+    volumes:
+      - ./executor:/executor
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+  web:
+    build:
+      context: api
+    init: true
+    volumes:
+      - ./api:/api
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - executor
+    networks:
+      - backend
+
+networks:
+  backend:

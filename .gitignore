@@ -1,0 +1,14 @@
+# Environment
+.env
+
+# Logfiles
+*.log
+
+# Virtual environments
+.venv
+
+# Python stuff
+__pycache__
+
+# Python example files
+example.py
