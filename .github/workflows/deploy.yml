@@ -43,4 +43,4 @@ jobs:
 
       - name: Deploy the stack
         run: |
-          cat docker-compose.production.yml | ssh ${{ secrets.AWS_USERNAME }}@${{ secrets.AWS_PUBLIC_DNS }} docker stack deploy --compose-file - executor
+          cat docker-compose.production.yml | ssh -i ~/.ssh/id_rsa ${{ secrets.AWS_USERNAME }}@${{ secrets.AWS_PUBLIC_DNS }} docker stack deploy --compose-file - executor
