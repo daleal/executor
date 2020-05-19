@@ -1,41 +1,6 @@
 import os
-from logging.config import dictConfig
 from flask import Flask, request, jsonify
 import requests
-
-
-# Logs configuration
-dictConfig({
-    "version": 1,
-    "formatters": {
-        "console": {
-            "format": "[%(asctime)s] [%(levelname)s] %(module)s: %(message)s"
-        },
-        "file": {
-            "format": ("[%(asctime)s] [%(levelname)s] %(pathname)s - "
-                       "line %(lineno)d: \n%(message)s\n")
-        }
-    },
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "stream": "ext://sys.stderr",
-            "formatter": "console"
-        },
-        "file": {
-            "class": "logging.FileHandler",
-            "filename": os.getenv(
-                "EXECUTOR_API_LOGS",
-                default="executor-api.log"
-            ),
-            "formatter": "file"
-        }
-    },
-    "root": {
-        "level": "INFO",
-        "handlers": ["console", "file"]
-    }
-})
 
 
 app = Flask(__name__)
