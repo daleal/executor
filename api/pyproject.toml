@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-executor-api"
+name = "executor-api"
 version = "0.1.0"
 description = "The API interface for the Python Executor."
 
@@ -9,7 +9,7 @@ authors = [
 ]
 
 readme = "README.md"
-repository = "https://github.com/daleal/python-executor"
+repository = "https://github.com/daleal/executor"
 
 [tool.poetry.dependencies]
 python = "^3.8"

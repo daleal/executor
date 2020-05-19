@@ -44,7 +44,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     app.logger.info("Request to index action")
-    return "https://www.github.com/daleal/python-executor/api"
+    return "https://www.github.com/daleal/executor/api"
 
 
 @app.route("/execute", methods=["POST"])
