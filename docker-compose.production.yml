@@ -1,9 +1,7 @@
 version: '3.7'
 services:
   executor:
-    image: executor_executor
-    build:
-      context: executor
+    image: daleal/executor
     init: true
     ports:
       - "8000:8000"
@@ -14,15 +12,13 @@ services:
       replicas: 5
       restart_policy:
         condition: any
-
   web:
-    image: executor_web
-    build:
-      context: api
+    image: daleal/executor-api
     init: true
     ports:
       - "80:5000"
-    env_file: .env
+    environment:
+      EXECUTOR_URL: http://executor:8000
     depends_on:
       - executor
     networks:
