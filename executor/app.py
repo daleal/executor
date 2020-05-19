@@ -70,7 +70,7 @@ def execute():
         sys.stdout = response
 
         # Execute the code
-        exec(data["content"])
+        exec(data["content"], {"__name__": "__main__"})
 
         # Restore stdout
         sys.stdout = old_stdout

@@ -8,7 +8,6 @@ import os
 import sys
 import json
 import requests
-# import dotenv
 
 
 def index(link):
@@ -16,7 +15,7 @@ def index(link):
     return requests.get(f'{link}/')
 
 
-def executor(link, filename):
+def execute(link, filename):
     """Executes a code file."""
     with open(filename, "r") as code_file:
         code = code_file.read()
@@ -30,10 +29,9 @@ if __name__ == "__main__":
     LINK = "http://localhost:5000"
     COMMANDS = {
         "index": index,
-        "executor":  executor
+        "execute":  execute
     }
 
-    # dotenv.load_dotenv()
     try:
         RESPONSE = COMMANDS[sys.argv[1]](LINK, *sys.argv[2:])
     except IndexError:
