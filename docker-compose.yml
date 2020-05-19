@@ -10,6 +10,14 @@ services:
       - "8000:8000"
     networks:
       - backend
+    restart: on-failure
+    # Swarm mode
+    deploy:
+      mode: replicated
+      replicas: 15
+      restart_policy:
+        condition: any
+
   web:
     build:
       context: api
@@ -23,6 +31,13 @@ services:
       - executor
     networks:
       - backend
+    restart: on-failure
+    # Swarm mode
+    deploy:
+      mode: replicated
+      replicas: 5
+      restart_policy:
+        condition: any
 
 networks:
   backend:
