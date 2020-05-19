@@ -26,7 +26,7 @@ def execute(link, filename):
 
 
 if __name__ == "__main__":
-    LINK = "http://localhost:5000"
+    LINK = "http://localhost:80"
     COMMANDS = {
         "index": index,
         "execute":  execute
