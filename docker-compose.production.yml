@@ -4,28 +4,31 @@ services:
     build:
       context: executor
     init: true
-    volumes:
-      - ./executor:/executor
     ports:
       - "8000:8000"
     networks:
       - backend
-    restart: on-failure
+    deploy:
+      mode: replicated
+      replicas: 15
+      restart_policy:
+        condition: any
 
   web:
     build:
       context: api
     init: true
-    volumes:
-      - ./api:/api
     ports:
       - "80:5000"
-    env_file: .env
     depends_on:
       - executor
     networks:
       - backend
-    restart: on-failure
+    deploy:
+      mode: replicated
+      replicas: 5
+      restart_policy:
+        condition: any
 
 networks:
   backend:
