@@ -1,7 +1,30 @@
 import os
 import sys
+from logging.config import dictConfig
 from io import StringIO
 from flask import Flask, request, jsonify
+
+
+# Logs configuration
+dictConfig({
+    "version": 1,
+    "formatters": {
+        "console": {
+            "format": "[%(asctime)s] [%(levelname)s] %(module)s: %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "stream": "ext://sys.stderr",
+            "formatter": "console"
+        }
+    },
+    "root": {
+        "level": "INFO",
+        "handlers": ["console"]
+    }
+})
 
 
 app = Flask(__name__)
