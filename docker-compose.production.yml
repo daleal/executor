@@ -18,7 +18,7 @@ services:
     ports:
       - "80:5000"
     environment:
-      EXECUTOR_URL: http://executor:8000
+      - EXECUTOR_URL
     depends_on:
       - executor
     networks:
