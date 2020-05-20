@@ -30,6 +30,8 @@ jobs:
           tags: "latest"
 
   deploy-to-aws:
+    needs: build-images
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
