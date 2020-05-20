@@ -17,8 +17,9 @@ services:
     init: true
     ports:
       - "80:5000"
+      - "443:5000"
     environment:
-      - EXECUTOR_URL
+      EXECUTOR_URL: http://executor:8000
     depends_on:
       - executor
     networks:
