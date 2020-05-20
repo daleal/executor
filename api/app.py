@@ -61,11 +61,24 @@ def execute():
         response_body = response.json()
 
         # Log response
-        app.logger.info(f"Code executed with response code {response_code} "
-                        f"and output:\n{response_body['response']}")
+        if response_code == 200:
+            app.logger.info(
+                f"Code executed "
+                f"{'correctly' if response_body['success'] else 'incorrectly'}"
+                f" with response code {response_code} and "
+                f"output:\n{response_body['response']}"
+            )
+        else:
+            app.logger.info(
+                f"Code executed incorrectly with response "
+                f"code {response_code}"
+            )
 
         # Return executed output
-        return jsonify({"success": True, "response": response_body}), 200
+        return jsonify({
+            "success": True,
+            "response": response_body["response"]
+        }), 200
     except Exception as err:
         # Log error
         app.logger.error(err)
